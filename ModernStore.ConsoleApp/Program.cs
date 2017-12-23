@@ -67,6 +67,11 @@ namespace ModernStore.ConsoleApp
 
             return new Customer(name, dateBirth, email, document, user);
         }
+
+        public void Update(Customer customer)
+        {
+            var name = new Name("Leonardo", "Ribeiro");
+        }
     }
 
     public class FakeProductRepository : IProductRepository

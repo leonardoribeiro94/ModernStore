@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandler\CustomerCommandHandler.cs" />
     <Compile Include="CommandHandler\OrderCommandHandler.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
     <Compile Include="Commands\RegisterOrderCommand.cs" />
     <Compile Include="Commands\RegisterOrderItemCommand.cs" />
+    <Compile Include="Commands\UpdateCustomerCommand.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />

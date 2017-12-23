@@ -28,8 +28,9 @@ namespace ModernStore.Domain.Entities
         public User User { get; private set; }
 
 
-        public void Update(string firstName, string lastName, DateTime birthDay)
+        public void Update(Name name, DateTime birthDay)
         {
+            Name = name;
             BirthDay = birthDay;
         }
     }

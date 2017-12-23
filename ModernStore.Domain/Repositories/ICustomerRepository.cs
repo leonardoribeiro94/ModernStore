@@ -7,5 +7,6 @@ namespace ModernStore.Domain.Repositories
     {
         Customer Get(Guid id);
         Customer GetByUserId(Guid id);
+        void Update(Customer customer);
     }
 }
