@@ -6,12 +6,12 @@ namespace ModernStore.Domain.Entities
 {
     public class Customer : Entity
     {
-        public Customer(Name name, DateTime birthDay, Email email,
+        public Customer(Name name, Email email,
             Document document,
             User user)
         {
             Name = name;
-            BirthDay = birthDay;
+            BirthDay = null;
             Email = email;
             Document = document;
             User = user;
@@ -23,7 +23,7 @@ namespace ModernStore.Domain.Entities
 
         public Name Name { get; private set; }
         public Email Email { get; private set; }
-        public DateTime BirthDay { get; private set; }
+        public DateTime? BirthDay { get; private set; }
         public Document Document { get; private set; }
         public User User { get; private set; }
 

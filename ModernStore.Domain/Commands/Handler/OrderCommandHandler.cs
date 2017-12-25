@@ -1,7 +1,9 @@
 ﻿using FluentValidator;
-using ModernStore.Domain.Commands;
+using ModernStore.Domain.Commands.Inputs;
+using ModernStore.Domain.Commands.Results;
 using ModernStore.Domain.Entities;
 using ModernStore.Domain.Repositories;
+using ModernStore.Shared.Commands;
 
 namespace ModernStore.Domain.CommandHandler
 {
@@ -20,7 +22,7 @@ namespace ModernStore.Domain.CommandHandler
             _orderRepository = orderRepository;
         }
 
-        public void Handle(RegisterOrderCommand command)
+        public ICommandResult Handle(RegisterOrderCommand command)
         {
 
             // Instancia o cliente (Lendo do repositorio)
@@ -38,8 +40,10 @@ namespace ModernStore.Domain.CommandHandler
 
             // Adiciona as notificações no pedido no Handler
             AddNotifications(order.Notifications);
-            if (order.IsValid())
+            if (IsValid())
                 _orderRepository.Save(order);
+
+            return new RegistrOrderCommandResult(order.Number);
         }
     }
 }

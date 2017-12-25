@@ -43,12 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandler\CustomerCommandHandler.cs" />
-    <Compile Include="CommandHandler\OrderCommandHandler.cs" />
-    <Compile Include="Commands\ICommandHandler.cs" />
-    <Compile Include="Commands\RegisterOrderCommand.cs" />
-    <Compile Include="Commands\RegisterOrderItemCommand.cs" />
-    <Compile Include="Commands\UpdateCustomerCommand.cs" />
+    <Compile Include="Commands\Handler\CustomerCommandHandler.cs" />
+    <Compile Include="Commands\Handler\OrderCommandHandler.cs" />
+    <Compile Include="Commands\Results\RegisterCustomerCommandResult.cs" />
+    <Compile Include="Commands\Results\RegistrOrderCommandResult.cs" />
+    <Compile Include="Commands\Inputs\RegisterCustomerCommand.cs" />
+    <Compile Include="Commands\Inputs\RegisterOrderCommand.cs" />
+    <Compile Include="Commands\Inputs\RegisterOrderItemCommand.cs" />
+    <Compile Include="Commands\Inputs\UpdateCustomerCommand.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
@@ -59,6 +61,12 @@
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Resources\EmailTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailTemplates.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IEmailService.cs" />
     <Compile Include="ValueObjects\Document.cs" />
     <Compile Include="ValueObjects\Email.cs" />
     <Compile Include="ValueObjects\Name.cs" />
@@ -72,5 +80,12 @@
       <Name>ModernStore.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmailTemplates.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
