@@ -9,6 +9,8 @@ namespace ModernStore.Domain.Entities
 {
     public class Order : Entity
     {
+        protected Order() { }
+
         private readonly IList<OrderItem> _items;
 
         public Order(Customer customer, decimal deliveryFee, decimal discount)
@@ -30,7 +32,7 @@ namespace ModernStore.Domain.Entities
         public DateTime CreateDate { get; set; }
         public string Number { get; set; }
         public EOrderStatus Status { get; set; }
-        public IReadOnlyCollection<OrderItem> Items => _items.ToArray();
+        public ICollection<OrderItem> Items => _items.ToArray();
         public decimal DeliveryFee { get; set; }
         public decimal Discount { get; set; }
 

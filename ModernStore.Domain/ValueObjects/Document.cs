@@ -4,6 +4,8 @@ namespace ModernStore.Domain.ValueObjects
 {
     public class Document : Notifiable
     {
+        public Document() { }
+
 
         public Document(string number)
         {

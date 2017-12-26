@@ -5,7 +5,7 @@ using ModernStore.Domain.Entities;
 using ModernStore.Domain.Repositories;
 using ModernStore.Shared.Commands;
 
-namespace ModernStore.Domain.CommandHandler
+namespace ModernStore.Domain.Commands.Handler
 {
     public class OrderCommandHandler : Notifiable, ICommandHandler<RegisterOrderCommand>
     {

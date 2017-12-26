@@ -6,6 +6,8 @@ namespace ModernStore.Domain.Entities
 {
     public class User : Entity
     {
+        protected User() { }
+
         public User(string userName, string passWord, string confirmPassword)
         {
 

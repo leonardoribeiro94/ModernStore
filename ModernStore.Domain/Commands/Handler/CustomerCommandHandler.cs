@@ -8,7 +8,7 @@ using ModernStore.Domain.Services;
 using ModernStore.Domain.ValueObjects;
 using ModernStore.Shared.Commands;
 
-namespace ModernStore.Domain.CommandHandler
+namespace ModernStore.Domain.Commands.Handler
 {
     public class CustomerCommandHandler : Notifiable,
         ICommandHandler<RegisterCustomerCommand>
