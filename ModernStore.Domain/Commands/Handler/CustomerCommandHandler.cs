@@ -24,7 +24,7 @@ namespace ModernStore.Domain.Commands.Handler
 
         public ICommandResult Handle(RegisterCustomerCommand command)
         {
-            //Passo 1  Recupera o cloente
+            //Passo 1  Recupera o cliente
             if (_customerRepository.DocumentExists(command.Document))
             {
                 AddNotification("Document", "Este CPF já está em uso!");

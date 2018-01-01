@@ -10,11 +10,11 @@ using System.Linq;
 
 namespace ModernStore.Infra.Repositories
 {
-    public class ProductRepositorycs : IProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly ModernStoreDataContext _context;
 
-        public ProductRepositorycs(ModernStoreDataContext context)
+        public ProductRepository(ModernStoreDataContext context)
         {
             _context = context;
         }
@@ -31,7 +31,7 @@ namespace ModernStore.Infra.Repositories
         {
             const string query = "SELECT [Id], [Title], [Price], [Image] FROM [Product]";
 
-            using (var conn = new SqlConnection(@""))
+            using (var conn = new SqlConnection(@"Server=.\sqlexpress;Database=ModernStore;Trusted_Connection=True;"))
             {
                 conn.Open();
                 return conn.Query<GetListProductCommandResult>(query);
