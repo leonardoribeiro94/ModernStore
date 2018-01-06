@@ -36,7 +36,7 @@ namespace ModernStore.Api.Cotrollers
                     return BadRequest(new
                     {
                         succssesResult = false,
-                        error = new[] { "Houve um erro interno" }
+                        error = new[] { $"Houve um erro interno: {ex.Message}" }
                     });
                 }
             }
