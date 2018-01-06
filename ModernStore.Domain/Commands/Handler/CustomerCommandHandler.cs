@@ -36,7 +36,7 @@ namespace ModernStore.Domain.Commands.Handler
             var name = new Name(command.FirstName, command.LastName);
             var document = new Document(command.Document);
             var email = new Email(command.Email);
-            var user = new User(command.UserName, command.LastName, command.ConfirmPassword);
+            var user = new User(command.UserName, command.Password, command.ConfirmPassword);
 
             var customer = new Customer(name, email, document, user);
 
@@ -48,17 +48,17 @@ namespace ModernStore.Domain.Commands.Handler
             AddNotifications(customer.Notifications);
 
 
-            //Passo 4. Inserir no banco
-            if (IsValid())
-                _customerRepository.Save(customer);
+            if (!IsValid())
+                return null;
 
+            //Passo 4. Inserir no banco
+            _customerRepository.Save(customer);
 
             //passo 5. Enviar E-mail de boas vindas
             _emailService.Send(customer.Name.ToString(),
                 customer.Email.Address,
                 string.Format(EmailTemplates.WelcomeEmailTitle, customer.Name),
                 string.Format(EmailTemplates.WelcomeEmailBody, customer.Name));
-
 
             //passo 6. Retornar algo
             return new RegisterCustomerCommandResult(customer.Id, customer.Name.ToString());

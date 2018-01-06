@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 
 namespace ModernStore.Api.Cotrollers
 {
-    public class CustomerController : BaseController
-    {
-        private readonly CustomerCommandHandler _commandHandler;
-        private readonly IUow _uow;
 
-        public CustomerController(IUow uow, CustomerCommandHandler commandHandler) :
+    public class OrderController : BaseController
+    {
+        private readonly IUow _uow;
+        private readonly OrderCommandHandler _commandHandler;
+
+        public OrderController(IUow uow, OrderCommandHandler commandHandler) :
             base(uow)
         {
             _uow = uow;
             _commandHandler = commandHandler;
         }
 
+
         [HttpPost]
-        [Route("v1/customers")]
-        public async Task<IActionResult> Post([FromBody] RegisterCustomerCommand command)
+        [Route("v1/Orders")]
+        public async Task<IActionResult> Post([FromBody] RegisterOrderCommand command)
         {
             var result = _commandHandler.Handle(command);
+
             return await Response(result, _commandHandler.Notifications);
         }
     }
