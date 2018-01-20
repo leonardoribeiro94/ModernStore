@@ -27,6 +27,14 @@ namespace ModernStore.Infra.Repositories
                 .FirstOrDefault(x => x.Id == id);
         }
 
+        public Customer GetByUserName(string userName)
+        {
+            return _context.Customers
+                .Include(x => x.User)
+                .AsNoTracking()
+                .FirstOrDefault(x => x.User.UserName == userName);
+        }
+
         public GetCustomerCommandResult Get(string userName)
         {
             #region Retorno consulta usando EF

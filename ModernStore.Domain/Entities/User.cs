@@ -23,6 +23,17 @@ namespace ModernStore.Domain.Entities
         public string PassWord { get; private set; }
         public bool Active { get; private set; }
 
+
+        public bool Authenticate(string userName, string passWord)
+        {
+            if (UserName == userName &&
+                PassWord == EncryptPassword(passWord))
+                return true;
+
+            AddNotification("User", "Usuário ou senha inválidos");
+            return false;
+        }
+
         public void Activate() => Active = true;
         public void Desactvate() => Active = false;
 
