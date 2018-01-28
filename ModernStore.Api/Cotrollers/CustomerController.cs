@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ModernStore.Domain.Commands.Handler;
 using ModernStore.Domain.Commands.Inputs;
 using ModernStore.Infra.Transactions;
@@ -19,6 +20,7 @@ namespace ModernStore.Api.Cotrollers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("v1/customers")]
         public async Task<IActionResult> Post([FromBody] RegisterCustomerCommand command)
         {

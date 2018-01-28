@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ModernStore.Domain.Repositories;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ModernStore.Api.Cotrollers
 {
@@ -16,6 +17,7 @@ namespace ModernStore.Api.Cotrollers
 
         [HttpGet]
         [Route("v1/products")]
+        [AllowAnonymous]
         public IActionResult Get()
         {
             return Ok(_productRepository.Get());

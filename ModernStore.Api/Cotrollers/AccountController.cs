@@ -44,7 +44,7 @@ namespace ModernStore.Api.Cotrollers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("v1/autenticate")]
+        [Route("v1/authenticate")]
         public async Task<IActionResult> Post([FromForm] AuthenticateUserCommand command)
         {
             if (command == null)
@@ -52,6 +52,9 @@ namespace ModernStore.Api.Cotrollers
                     new List<Notification> { new Notification("User", "Usuário ou senha invlálidas") });
 
             var identity = await GetClaims(command);
+            if (identity == null)
+                return await Response(null,
+                    new List<Notification> { new Notification("User", "Usuário ou senha invlálidas") });
 
             var claims = new[]
             {
