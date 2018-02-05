@@ -3,6 +3,7 @@ using ModernStore.Domain.Commands.Results;
 using ModernStore.Domain.Entities;
 using ModernStore.Domain.Repositories;
 using ModernStore.Infra.DataContexts;
+using ModernStore.Shared;
 using System;
 using System.Data.Entity;
 using System.Data.SqlClient;
@@ -58,7 +59,7 @@ namespace ModernStore.Infra.Repositories
 
             #endregion
 
-            using (var conn = new SqlConnection(@""))
+            using (var conn = new SqlConnection(Runtime.ConnectionString))
             {
                 conn.Open();
                 const string query = @"SELECT * FROM GetLoginInfoView 

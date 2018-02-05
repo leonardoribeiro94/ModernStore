@@ -1,5 +1,6 @@
 ﻿using ModernStore.Domain.Entities;
 using ModernStore.Infra.Mappings;
+using ModernStore.Shared;
 using System.Data.Entity;
 
 namespace ModernStore.Infra.DataContexts
@@ -7,8 +8,7 @@ namespace ModernStore.Infra.DataContexts
     public class ModernStoreDataContext : DbContext
     {
         public ModernStoreDataContext()
-            //: base("ModernStoreConnectionString")
-            : base(@"Server=.\sqlexpress;Database=ModernStore;Trusted_Connection=True;")
+            : base(Runtime.ConnectionString)
 
         {
             Configuration.LazyLoadingEnabled = false;
