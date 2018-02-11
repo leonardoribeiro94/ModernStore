@@ -115,9 +115,12 @@ namespace ModernStore.Api
                 TokenValidationParameters = tokenValidationParameters
             });
 
-            app.UseCors(x => x.AllowAnyHeader());
-            app.UseCors(x => x.AllowAnyMethod());
-            app.UseCors(x => x.AllowAnyOrigin());
+            app.UseCors(x =>
+            {
+                x.AllowAnyHeader();
+                x.AllowAnyMethod();
+                x.AllowAnyOrigin();
+            });
 
             app.UseMvc();
 
